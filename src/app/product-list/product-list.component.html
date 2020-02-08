@@ -1,17 +1,22 @@
 <h2>Products</h2>
-
+    <!-- Repetidor bem parecido com PHP -->
 <div *ngFor="let product of products">
     <h3>
         <a [title]="product.name + ' details'">
             {{ product.name }}
         </a>
     </h3>
+    <!-- Aqui estou verificando com *ngIf se o produto tem descrição -->
     <p *ngIf="product.description">
         Description: {{ product.description }}
     </p>
     <button (click)="share()">
         Share
     </button>
+
+    <!-- Aqui estou chamando o componente 'product-alerts'  -->
+    <app-product-alerts [product]="product" (notify)="onNotify()">
+    </app-product-alerts>
 </div>
 
 <!--
